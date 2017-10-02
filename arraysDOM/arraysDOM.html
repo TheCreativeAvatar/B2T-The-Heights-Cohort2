@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+
+	<body>
+		<h1 id = "text"></h1>
+			<script type="text/javascript">
+				var input = prompt(" Add More Fruit ");
+				// this creates a promt for the array
+
+				var fruits = [" Apple", " Orange"," Kiwi"];
+				//setting var for fruits
+				fruits.push(input)
+				document.getElementById('text').innerHTML = fruits.join(' with ')
+
+			</script>
+	</body>
+</html>

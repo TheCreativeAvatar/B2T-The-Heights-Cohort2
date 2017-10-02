@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+
+	<body onload="fruitsPush()">
+
+		<input type="button" value="Click Me" onclick = "clickButton()">
+		<!-- onClick onload on change are event listeners-->
+		<br>
+		<input id= "name" type="text" onchange="displayName()">
+		<input type="button" value="displayName" onclick = "displayName()">
+		<h4 id = "display"></h4>
+		<input type="Button" value="Add More Fruit" onclick="fruitsPush()">
+
+		<script type="text/javascript">
+
+			var fruits = ['Apple', 'Mango','Banana'];
+
+			function fruitsPush(){
+				fruits.push(prompt('Enter fruit').toLowerCase());
+				fruits.sort();
+				document.getElementById('display').innerHTML = fruits.join(' with ');
+			}
+
+			function displayName(){
+				var name = document.getElementById('name').value;
+				// use value for retrieving input value, ust .innerHTML for everything else
+				document.getElementById('display').innerHTML = name;
+			}
+			function clickButton(){
+				console.log('owww that hurt');
+			}
+
+
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//get all #'s from 1-100
+			//if # is divisable by 3 display fizz
+			//if # is div. by 5 disp. buzz
+			//if # is div. by 3 & 5 disp. fizz buzz
+			// if none of above disp. the #
+
+			var i =1;
+			while(1 <= 100){
+				if( i%3 == 0 && i%5 == 0){
+					console.log('FizzBuzz');
+				//this  gets the first note because (%)moduler gets the remainder so if remainder is equal to zero it displays fizz
+				}else if(i%5 ==0){
+					console.log('Buzz');
+				}
+				else if	(i%3 == 0){
+					console.log('Fizz');
+				}
+				else{
+					console.log(i);
+				}
+				i++;
+			}
+		</script>
+
+	</body>
+</html>

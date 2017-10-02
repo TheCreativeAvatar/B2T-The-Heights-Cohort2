@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+
+			var color = [' Blue',' Green',' Red',' Orange', ' Violet',' Indigo',' Yellow'];
+
+			var o = ['th','st','nd','rd'];
+
+			for (var i = 0; i < color.length; i++){
+
+				if(i < 3)// index in colors less than 3 (starting from zero)
+				{
+					var suffix = o[i +1]; //then combines var o index starting after zero @1
+
+				}else {
+					var suffix =o[0];//otherwise it will use var o index 0 to combine to res of colors
+				}
+				console.log((i + 1 + suffix +" choice is ")+ color[i]); //then it prints choice is between paired up elements, allowing pairs in order to be printed to log
+			}
+		</script>
+	</body>
+</html>

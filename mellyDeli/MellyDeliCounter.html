@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Krusty's Burger</title>
+		<style type="text/css">
+			h1{ 
+				text-align: center;
+				text-shadow: 5px 2px 4px grey;
+				color: black;
+			}
+			h3{
+				text-align: center;
+				text-decoration: underline;
+				text-shadow: 5px 2px 4px grey;
+				color: black;
+			}
+			
+			table {
+				text-align: center;
+				text-decoration: underline; 
+				text-shadow: 5px 2px 4px grey;
+				color: black;
+				width: 500px;
+				border: solid 5px #FA0000;
+				padding-left: 30px;
+				padding-right: 30px;
+			}
+			input[type=button]{
+				font-weight: 100px;
+				text-decoration: underline; 
+				background-color: red;
+				width: 300px;
+				height:50px;
+			}
+			body {
+
+				background-color: black;
+
+			}
+			img{
+				position: relative;
+				left: 25%;
+				right: 25%;
+				margin: auto;
+			}
+			.mods {
+				background-color: yellow;
+				width: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="Krusty_Burger.png">
+		<h1 class="mods">Welcome to Krusty Burger!
+		 Home of The Greasiest Burger you'll find around....Unless your in Mexico!  Order below ! </h1>
+		<!-- Input to display name and order -->
+
+		<h3 class="mods"> Krusty Customer's Name:</h3><input type="text" id="inputName">
+		<br>
+
+		<h3 class="mods">Krusty Customer's Order:</h3><input type="text" id="inputOrder">
+		<br><br>
+		<!-- Displays button to add and remove elements from the array -->	
+		<input type="button" value= "See Menu" onclick="pullMenu()" id="menuButton">
+		
+		<br><br>
+
+		<input type="button" value="Click Me to Place Order" onclick="addOrder()">
+	
+		<br><br>
+
+		<input type="button" value="Thank you! I got my order" onclick="served()">
+
+		<br>
+
+		<div id="menuPop">
+			
+		</div>
+		<h3 class="mods" id="serveDisplay"></h3>
+		<table border="3" id="display" class="mods">
+			<tr>
+				<th>Order Number</th>
+				<th>Name</th>
+				<th>Order</th>
+			</tr>
+
+		</table>
+		<br>
+		<img src="seal.png">
+		
+
+		<script type="text/javascript">
+
+			//Container that holds name and order objects
+			var displayOrder = [];
+			//Adds inputs to the array
+			function addOrder(){
+				//Creates an object with the properties of name and order 
+				var custOrder = {
+					 Name: document.getElementById('inputName').value,
+					 Order: document.getElementById('inputOrder').value,
+				};
+				//Adds objects to the array
+				displayOrder.push(custOrder);
+				displayArray();
+				
+			}
+			
+				function served(){
+					var removedOrder= displayOrder.shift();
+				//If the array is empty display this
+					if (displayOrder.length==0){
+						document.getElementById("serveDisplay").innerHTML = 'Be first in line.'
+				//If the array is not empty display this
+					}else{
+						document.getElementById("serveDisplay").innerHTML = removedOrder.Name + '  was served  '+ removedOrder.Order
+					}
+					displayArray();
+				}	
+				var counter = 0;
+			 	function pullMenu(){
+			 		var pic = document.createElement("img");
+			 		pic.id = 'melMenu'
+			 		pic.src = 'menu.jpg';
+			 		
+			 		if(counter == 0){
+			 			document.getElementById("menuPop").appendChild(pic);
+			 		}
+
+			 		if(counter % 2 == 0){
+			 			document.getElementById("melMenu").style.display = 'block';
+			 			document.getElementById("menuButton").value = 'Hide Menu';
+			 		}else{
+			 			document.getElementById("melMenu").style.display = 'none';
+			 			document.getElementById("menuButton").value = 'See Menu';
+			 		}
+			 		/*
+			 		if(counter == 0 && isOpen == false){
+			 			document.getElementById("menuPop").appendChild(pic);
+			 			document.getElementById("melMenu").style.display = 'block';
+			 			isOpen = !isOpen;
+			 			counter += 1;
+			 		}else{
+			 			document.getElementById("melMenu").style.display = 'none';
+			 			counter = 0;
+			 		}
+			 		*/
+			 		counter += 1;
+			 	}           
+         
+
+			
+			//Displays elements from the array in the table
+			function displayArray(){
+				//Adds header to the table 
+				document.getElementById('display').innerHTML = "";
+				var tr = document.createElement("tr")
+				document.getElementById("display").appendChild(tr)
+				var th = document.createElement("th")
+				var th1 = document.createElement("th")
+				var th2 = document.createElement("th")
+				tr.appendChild(th)
+				tr.appendChild(th1)
+				tr.appendChild(th2)
+				//Puts text in the table header
+				th.innerHTML='Order Number'
+				th1.innerHTML='Name'
+				th2.innerHTML='Order'
+				//Loops through the array displaying the objects of the array on the table
+				for(var i = 0; i < displayOrder.length; i++){
+					var tr = document.createElement("tr")
+					document.getElementById("display").appendChild(tr)
+					var td = document.createElement("td")
+					var td1 = document.createElement("td")
+					var td2 = document.createElement("td")
+
+					tr.appendChild(td)
+					tr.appendChild(td1)
+					tr.appendChild(td2)
+
+					//Uses index of the element as its position  
+					td.innerHTML=i+1
+					//Gets the element properties and displays them in table data
+					td1.innerHTML=displayOrder[i].Name
+					td2.innerHTML=displayOrder[i].Order
+					
+				}
+			}
+			
+		</script>
+		
+	</body>
+
+</html>
